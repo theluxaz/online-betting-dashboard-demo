@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { useState } from "react";
 import {
   Box,
@@ -13,13 +13,18 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { UserData, ChosenBet, FinalBet } from "../static/types";
 import Title from "./Title";
 
+
 interface Props {
   userData: UserData;
   chosenBet: ChosenBet | undefined;
   chooseFinalBet: (finalBet: FinalBet) => void;
 }
 
-const BettingBox: React.FC<Props> = ({ userData, chosenBet, chooseFinalBet }) => {
+const BettingBox: React.FC<Props> = ({
+  userData,
+  chosenBet,
+  chooseFinalBet,
+}) => {
   const [stake, setStake] = useState<number>(0);
   const [error, setError] = useState<boolean>(false);
 
@@ -54,11 +59,15 @@ const BettingBox: React.FC<Props> = ({ userData, chosenBet, chooseFinalBet }) =>
       </Box>
       <Box mt={0} mb={0}>
         <FormControl size="medium" fullWidth sx={{ m: 1, "margin-left": 0 }}>
-          <InputLabel htmlFor="outlined-adornment-amount">{chosenBet?("Amount for "+chosenBet.outcome_name):("Amount")}</InputLabel>
+          <InputLabel htmlFor="outlined-adornment-amount">
+            {chosenBet ? "Amount for " + chosenBet.outcome_name : "Amount"}
+          </InputLabel>
           <OutlinedInput
             id="outlined-adornment-amount"
             startAdornment={<InputAdornment position="start">$</InputAdornment>}
-            label={chosenBet?("Amount for "+chosenBet.outcome_name):("Amount")}
+            label={
+              chosenBet ? "Amount for " + chosenBet.outcome_name : "Amount"
+            }
             type="number"
             value={stake}
             onChange={handleInputChange}
@@ -87,7 +96,7 @@ const BettingBox: React.FC<Props> = ({ userData, chosenBet, chooseFinalBet }) =>
           }
           size="large"
           endIcon={chosenBet ? <AttachMoneyIcon /> : ""}
-          disabled={!chosenBet} // Disable the button if chosenBet is not true
+          disabled={!chosenBet}
         >
           {chosenBet ? "Bet" : "Pick Odds"}
         </Button>

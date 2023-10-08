@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
-import { Badge, Divider, IconButton, List, ThemeProvider, Toolbar,Box, Typography, Hidden, AppBarProps as MuiAppBarProps } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import MuiAppBar from '@mui/material/AppBar';
-import MuiDrawer from '@mui/material/Drawer';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
+import React, { useState } from "react";
+import {
+  Badge,
+  Divider,
+  IconButton,
+  List,
+  Toolbar,
+  Box,
+  Typography,
+  Hidden,
+  AppBarProps as MuiAppBarProps,
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import MuiAppBar from "@mui/material/AppBar";
+import MuiDrawer from "@mui/material/Drawer";
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import { mainListItems, secondaryListItems } from "./listItems";
 
 const drawerWidth: number = 240;
 
@@ -15,17 +25,17 @@ interface AppBarProps extends MuiAppBarProps {
 }
 
 const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
+  shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(['width', 'margin'], {
+  transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
+    transition: theme.transitions.create(["width", "margin"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -33,36 +43,36 @@ const AppBar = styled(MuiAppBar, {
 }));
 
 const Drawer = styled(MuiDrawer, {
-  shouldForwardProp: (prop) => prop !== 'open',
+  shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
-  '& .MuiDrawer-paper': {
-    position: 'relative',
-    whiteSpace: 'nowrap',
+  "& .MuiDrawer-paper": {
+    position: "relative",
+    whiteSpace: "nowrap",
     width: drawerWidth,
-    transition: theme.transitions.create('width', {
+    transition: theme.transitions.create("width", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    boxSizing: 'border-box',
+    boxSizing: "border-box",
     ...(!open && {
-      overflowX: 'hidden',
-      transition: theme.transitions.create('width', {
+      overflowX: "hidden",
+      transition: theme.transitions.create("width", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
       }),
       width: theme.spacing(7),
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up("sm")]: {
         width: theme.spacing(9),
       },
     }),
   },
 }));
 
-const Image = styled('img')({
-  maxWidth: '100%',
-  maxHeight: '50px',
-  height: 'auto',
-  borderRadius: '8px', 
+const Image = styled("img")({
+  maxWidth: "100%",
+  maxHeight: "50px",
+  height: "auto",
+  borderRadius: "8px",
 });
 
 interface SideBarProps {
@@ -76,13 +86,25 @@ const SideBar: React.FC<SideBarProps> = ({ pageName }) => {
   return (
     <>
       <AppBar position="absolute" open={open}>
-        <Toolbar sx={{ pr: '24px' }}>
+        <Toolbar sx={{ pr: "24px" }}>
           <Hidden smDown>
-            <IconButton edge="start" color="inherit" aria-label="open drawer" onClick={toggleDrawer} sx={{ marginRight: '36px', ...(open && { display: 'none' }) }}>
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              onClick={toggleDrawer}
+              sx={{ marginRight: "36px", ...(open && { display: "none" }) }}
+            >
               <MenuIcon />
             </IconButton>
           </Hidden>
-          <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            sx={{ flexGrow: 1 }}
+          >
             {pageName}
           </Typography>
           <IconButton color="inherit">
@@ -94,11 +116,17 @@ const SideBar: React.FC<SideBarProps> = ({ pageName }) => {
       </AppBar>
       <Hidden smDown>
         <Drawer variant="permanent" open={open}>
-          
-          <Toolbar sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', px: [1] }}>
+          <Toolbar
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
+              px: [1],
+            }}
+          >
             <Box>
-          <Image src={require(`../static/logo.png`)} alt="Logo" />
-          </Box>
+              <Image src={require(`../static/logo.png`)} alt="Logo" />
+            </Box>
             <IconButton onClick={toggleDrawer}>
               <ChevronLeftIcon />
             </IconButton>

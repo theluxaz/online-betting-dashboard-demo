@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import {
   Box,
   Typography,
@@ -10,6 +10,7 @@ import {
 } from "@mui/material/";
 import { Event, ChosenBet } from "../static/types";
 import Title from "./Title";
+
 
 interface DetailsProps {
   event: Event;

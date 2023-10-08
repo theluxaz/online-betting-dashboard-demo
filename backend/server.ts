@@ -7,7 +7,7 @@ import cors from 'cors'
 
 dotenv.config();
 
-
+//Reseeds the database on every server start to ensure it runs properly for the Demo
 if (process.env.NODE_ENV !== 'production') {
   const seedQuery = fs.readFileSync('./sql/seed-db.sql', { encoding: 'utf8' })
   pool.query(seedQuery, (err, res) => {
@@ -22,7 +22,7 @@ const app: Express = express();
 const port = process.env.EXPRESS_PORT;
 app.use(cors())
 
-app.get('/api/football/events', async (req: Request, res: Response) => {
+app.get('/api/events/football', async (req: Request, res: Response) => {
   try {
       const result = await pool.query('SELECT id, TO_CHAR(date, \'YYYY-MM-DD HH24:MI\') as date, name, type, score_a, score_b, status, outcome_name, TO_CHAR(last_updated, \'YYYY-MM-DD HH24:MI\') as last_updated, odds_a_name, odds_b_name, odds_c_name, odds_a, odds_b, odds_c FROM events where status != \'Finished\';');
       res.json(result.rows);
@@ -32,7 +32,7 @@ app.get('/api/football/events', async (req: Request, res: Response) => {
   }
 });
 
-app.get('/api/football/events/finished', async (req: Request, res: Response) => {
+app.get('/api/events/football/finished', async (req: Request, res: Response) => {
   try {
       const result = await pool.query('SELECT id, TO_CHAR(date, \'YYYY-MM-DD HH24:MI\') as date, name, type, score_a, score_b, status, outcome_name, TO_CHAR(last_updated, \'YYYY-MM-DD HH24:MI\') as last_updated, odds_a_name, odds_b_name, odds_c_name, odds_a, odds_b, odds_c FROM events where status = \'Finished\';');
       res.json(result.rows);

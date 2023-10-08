@@ -1,18 +1,17 @@
-import * as React from 'react';
 import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
   ListSubheader,
-} from '@mui/material/';
+} from "@mui/material/";
 import {
   Casino,
   SportsFootball,
   SportsSoccer,
   Settings,
   PriceChange,
-} from '@mui/icons-material/';
-import DashboardIcon from '@mui/icons-material/Dashboard';
+} from "@mui/icons-material/";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 
 interface ListItem {
   icon: JSX.Element;
@@ -20,17 +19,17 @@ interface ListItem {
 }
 
 const mainItems: ListItem[] = [
-  { icon: <DashboardIcon />, text: 'Dashboard' },
-  { icon: <PriceChange />, text: 'Betting History' },
-  { icon: <SportsFootball />, text: 'Sports Betting' },
-  { icon: <Casino />, text: 'Casino' },
-  { icon: <Settings />, text: 'Account Settings' },
+  { icon: <DashboardIcon />, text: "Dashboard" },
+  { icon: <PriceChange />, text: "Betting History" },
+  { icon: <SportsFootball />, text: "Sports Betting" },
+  { icon: <Casino />, text: "Casino" },
+  { icon: <Settings />, text: "Account Settings" },
 ];
 
 const secondaryItems: ListItem[] = [
-  { icon: <SportsSoccer />, text: 'Football' },
-  { icon: <SportsFootball />, text: 'Rugby' },
-  { icon: <Casino />, text: 'Roulette' },
+  { icon: <SportsSoccer />, text: "Football" },
+  { icon: <SportsFootball />, text: "Rugby" },
+  { icon: <Casino />, text: "Roulette" },
 ];
 
 const createListItems = (items: ListItem[]): JSX.Element[] =>

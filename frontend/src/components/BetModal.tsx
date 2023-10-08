@@ -1,4 +1,3 @@
-import * as React from "react";
 import { Box, Typography, Modal, IconButton } from "@mui/material/";
 import CloseIcon from "@mui/icons-material/Close";
 import { FinalBet } from "../static/types";

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {
   Link,
   Table,
@@ -7,9 +6,9 @@ import {
   TableHead,
   TableRow,
   TableContainer,
-} from '@mui/material';
-import Title from './Title';
-import { Event } from '../static/types';
+} from "@mui/material";
+import Title from "./Title";
+import { Event } from "../static/types";
 
 interface EventsProps {
   events: Event[];
@@ -19,20 +18,25 @@ interface EventsProps {
 
 const styles = {
   tableRow: {
-    cursor: 'pointer',
+    cursor: "pointer",
   },
   olderEventsLink: {
     mt: 3,
   },
 };
 
-const formatOdds = (oddsName: string, odds: number) => `${oddsName} ( ${odds} )`;
+const formatOdds = (oddsName: string, odds: number) =>
+  `${oddsName} ( ${odds} )`;
 
-const Events: React.FC<EventsProps> = ({ events, selectedEvent, selectEvent }) => {
+const Events: React.FC<EventsProps> = ({
+  events,
+  selectedEvent,
+  selectEvent,
+}) => {
   const renderEventsTable = () => (
     <>
       <Title>Current Matches</Title>
-      <TableContainer sx={{ overflowX: 'auto' }}>
+      <TableContainer sx={{ overflowX: "auto" }}>
         <Table size="medium">
           <TableHead>
             <TableRow>
@@ -53,7 +57,9 @@ const Events: React.FC<EventsProps> = ({ events, selectedEvent, selectEvent }) =
               >
                 <TableCell>{event.date}</TableCell>
                 <TableCell>{event.name}</TableCell>
-                <TableCell>{formatOdds(event.odds_a_name, event.odds_a)}</TableCell>
+                <TableCell>
+                  {formatOdds(event.odds_a_name, event.odds_a)}
+                </TableCell>
                 <TableCell>{event.status}</TableCell>
               </TableRow>
             ))}
@@ -66,7 +72,11 @@ const Events: React.FC<EventsProps> = ({ events, selectedEvent, selectEvent }) =
     </>
   );
 
-  return events.length > 0 ? renderEventsTable() : <Title>Current Matches</Title>;
-}
+  return events.length > 0 ? (
+    renderEventsTable()
+  ) : (
+    <Title>Current Matches</Title>
+  );
+};
 
 export default Events;

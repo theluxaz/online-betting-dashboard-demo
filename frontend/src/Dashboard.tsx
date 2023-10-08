@@ -28,11 +28,11 @@ export default function Dashboard() {
     const fetchData = async () => {
       setError(null);
       try {
-        const response = await fetch(API_URL+"/api/football/events");
+        const response = await fetch(API_URL+"/api/events/football");
         if (!response.ok) {
-          throw new Error("Network response was not ok");
+          throw new Error("Network response error");
         }
-        const eventsData = await response.json();
+        let eventsData = await response.json();
         eventsData.sort((event1: Event, event2: Event) => {
           return event1.date <= event2.date ? -1 : event1.date > event2.date ? 1 : 0;
         });

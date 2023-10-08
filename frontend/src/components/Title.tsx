@@ -1,4 +1,3 @@
-import * as React from "react";
 import Typography from "@mui/material/Typography";
 
 interface TitleProps {
@@ -11,6 +10,6 @@ const Title: React.FC<TitleProps> = ({ children }) => {
       {children}
     </Typography>
   );
-}
+};
 
 export default Title;
