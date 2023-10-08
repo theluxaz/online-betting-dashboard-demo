@@ -90,18 +90,23 @@ Start the frontend:
    ```
 
 ## Additional Information
-There are alternative database tables and query functions for more generic event objects in the ./alternative folder. These allow for more flexibility and should be expanded upon if project needed to continue. The current database tables are specifically made to be simple for this demo.
+There are alternative database tables and query functions for more generic event objects in the ./alternative backend folder. These allow for more flexibility and should be expanded upon if project needed to continue. The current database tables are specifically made to be simple for this demo.
 
 ## Troubleshooting
 
-To be determined...
+If you get an error saying:
+   ```sh
+   psql not recognized as an internal or external command
+   ```
+Then you need need to set the ./bin and ./lib folders of your [PostgreSQL installation folders to the PATH](https://stackoverflow.com/questions/39602133/how-to-set-postgres-path-variable-on-windows-10) (Windows)
+
 
 ## Roadmap
 
 * Add authentication
 * Add comments
-* Add test coverage for Frontend
-* Add tests for Backend
+* Add test coverage for frontend
+* Add tests for backend
 * Transition backend to use an ORM like Prisma
 * Integrate other types of events in the system for betting
 * Add routing and different pages
